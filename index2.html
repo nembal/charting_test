@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETH-USDC Price Chart Comparison</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .chart-container {
+            width: 30%;
+            height: 33.33%; /* Adjust height to accommodate three charts */
+
+            position: relative;
+        }
+        iframe {
+            width: calc(100% + 50px);
+            height: calc(100% + 100px); /* Adjust to cover each chart */
+            border: none;
+            margin-left: 0px;
+            margin-top: -105px;
+            margin-bottom: -80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- GeckoTerminal Chart -->
+    <!--
+    <div class="chart-container">
+        <iframe src="https://www.geckoterminal.com/eth/pools/0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640?embed=1&info=0&swaps=0&tvl=0&apy=0&token_prcs_usd=1&token_prcs_native=0&utc=0&theme=dark&chartType=area&chartResolution=15m&chartPriceScale=right&chartGrid=true&chartLegend=true&chartDataOHLC=false&chartDataVolume=false&chartDataLogoVolume=false&chartStyle=candles&chartCandleLightUpDown=true&chartEvents=true&chartToolbar=true&chartTimescale=true&chartStudiesMA=false&chartStudiesUpperVolume=false"></iframe>
+    </div>
+    -->
+
+    <!-- Dexscreener Chart -->
+    <!--
+    <div class="chart-container">
+        <iframe src="https://dexscreener.com/ethereum/0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640?embed=1" style="transform: scale(1.5); transform-origin: 0 0;"></iframe>
+    </div>
+    -->
+
+    <!-- Settings: https://github.com/dextools-io/chart-widget?tab=readme-ov-file#supported-blockchains -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chain = 'ether'; // Set your chain here
+            const tokenAddress = '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640'; // Set your token address here
+            const dextoolsWidget = document.getElementById('dextools-widget');
+            dextoolsWidget.src = `https://www.dextools.io/widget-chart/en/${chain}/pe-light/${tokenAddress}?theme=light&chartType=1&chartResolution=1&drawingToolbars=false`;
+        });
+    </script>
+    <!-- DEXTools Chart -->
+    <div class="chart-container">
+        <iframe id="dextools-widget"
+            title="DEXTools Trading Chart"
+            src=""></iframe>
+    </div>
+</body>
+</html>
